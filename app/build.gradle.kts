@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20"
 }
 
 android {
@@ -52,8 +54,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation("com.arkivanov.decompose:decompose:3.3.0")
-    implementation("com.arkivanov.decompose:extensions-compose:3.3.0")
+    implementation("com.arkivanov.decompose:decompose:3.4.0")
+    implementation("com.arkivanov.decompose:extensions-compose:3.4.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
