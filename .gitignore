@@ -1,4 +1,6 @@
 *.iml
+*.klib
+
 .gradle
 /local.properties
 /.idea/caches
@@ -15,3 +17,9 @@
 local.properties
 /.idea/studiobot.xml
 /.idea/misc.xml
+/.idea/deviceManager.xml
+/.idea/vcs.xml
+/.idea/kotlinc.xml
+/.idea/artifacts/shared.xml
+/.idea/deploymentTargetSelector.xml
+/.idea/compiler.xml
