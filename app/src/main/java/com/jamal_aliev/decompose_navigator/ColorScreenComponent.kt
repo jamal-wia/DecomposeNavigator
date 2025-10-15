@@ -55,7 +55,7 @@ class ColorScreenComponent(
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Button(onClick = {
                         (currentNavigator as? LineNavigator)?.pushNew(
-                            Config.Color(randomColorHex())
+                            ColorConfig(randomColorHex())
                         )
                     }) { Text("push") }
 
@@ -103,15 +103,15 @@ class ColorScreenComponent(
             return try {
                 // support #RRGGBB or RRGGBB
                 val clean = hex.removePrefix("#")
-                val int = clean.toLong(16).toInt()
-                Color(0xFF000000.toInt() or int)
+                val color = clean.toLong(16)
+                Color(0xFF000000L or color)
             } catch (_: Exception) {
                 Color.Gray
             }
         }
 
         fun randomColorHex(): String {
-            val value = Random.nextInt(0x1000000) // 0..0xFFFFFF
+            val value = Random.nextInt(0x1000000)
             val hex = value.toString(16).padStart(6, '0').uppercase()
             return "#$hex"
         }

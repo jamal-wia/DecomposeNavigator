@@ -2,22 +2,23 @@ package com.jamal_aliev.decompose_navigator
 
 import com.arkivanov.decompose.ComponentContext
 import com.jamal_aliev.decompose_navigator.config.DecomposeNavigationConfig
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-sealed interface Config : DecomposeNavigationConfig {
+@Serializable
+@SerialName("ColorConfig")
+data class ColorConfig(
+    val colorHex: String,
+    override val typeId: String = ColorConfig::class.simpleName.orEmpty(),
+    override val id: Long = typeId.hashCode().toLong(),
+) : DecomposeNavigationConfig
 
-    data class Color(
-        val colorHex: String,
-        override val typeId: String = Color::class.simpleName.orEmpty(),
-        override val id: Long = typeId.hashCode().toLong(),
-    ) : Config
-
-}
 
 val ScreenConfigFactory = ScreenConfigFactory(
     extraScreenConfigFactory = { config: DecomposeNavigationConfig,
                                  ctx: ComponentContext ->
         when (config) {
-            is Config.Color -> {
+            is ColorConfig -> {
                 ColorScreenComponent(
                     colorHex = config.colorHex,
                 )
@@ -30,21 +31,27 @@ val ScreenConfigFactory = ScreenConfigFactory(
 
 val switchContainerDecomposeNavigationConfig1 = DecomposeNavigationConfig.SwitchContainer(
     contentConfig = DecomposeNavigationConfig.LineNavigation(
-        initialConfigs = listOf(element = Config.Color("#000000")),
+        initialConfigs = listOf(element = ColorConfig("#000000")),
     ),
 )
 
 val switchContainerDecomposeNavigationConfig2 = DecomposeNavigationConfig.SwitchContainer(
     contentConfig = DecomposeNavigationConfig.LineNavigation(
-        initialConfigs = listOf(Config.Color("#FFFFFF"))
+        initialConfigs = listOf(ColorConfig("#FFFFFF"))
     ),
 )
 
 val tabNavigationConfig = DecomposeNavigationConfig.TabNavigation(
     initialConfig = switchContainerDecomposeNavigationConfig1,
     tabs = listOf(
-        "tab-1" to switchContainerDecomposeNavigationConfig1,
-        "tab-2" to switchContainerDecomposeNavigationConfig2
+        DecomposeNavigationConfig.TabNavigation.TabNavigationEntry(
+            "tab-1",
+            switchContainerDecomposeNavigationConfig1
+        ),
+        DecomposeNavigationConfig.TabNavigation.TabNavigationEntry(
+            "tab-2",
+            switchContainerDecomposeNavigationConfig2
+        ),
     )
 )
 
@@ -52,3 +59,8 @@ val rootLineNavigationConfig = DecomposeNavigationConfig.LineNavigation(
     initialConfigs = listOf(tabNavigationConfig)
 )
 
+
+val testContentConfig1 = DecomposeNavigationConfig.LineNavigation(
+    initialConfigs = listOf(ColorConfig("#FFFFFF")),
+    id = 10
+)

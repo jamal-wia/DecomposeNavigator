@@ -7,9 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
-import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
@@ -27,13 +27,19 @@ import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.statekeeper.SerializableContainer
+import com.jamal_aliev.decompose_navigator.NavigationComponent
 import com.jamal_aliev.decompose_navigator.RenderComponent
 import com.jamal_aliev.decompose_navigator.config.DecomposeNavigationConfig
+import com.jamal_aliev.decompose_navigator.config.decomposeNavigationConfigSerializersModule
 import com.jamal_aliev.decompose_navigator.navigator.LocalNavigator
-import com.jamal_aliev.decompose_navigator.NavigationComponent
 import com.jamal_aliev.decompose_navigator.navigator.Navigator
 import com.jamal_aliev.decompose_navigator.navigator.impl.LineNavigator
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.PolymorphicSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.json.Json
 
 class LineNavigationComponent(
     override val typeId: String,
@@ -46,14 +52,30 @@ class LineNavigationComponent(
 
     private val navigation = StackNavigation<DecomposeNavigationConfig>()
 
+    val json
+        get() = Json {
+            serializersModule = decomposeNavigationConfigSerializersModule
+            classDiscriminator = "type"
+        }
+
+
     val childStack: Value<ChildStack<DecomposeNavigationConfig, RenderComponent>> = childStack(
         source = navigation,
         initialStack = { initialConfigs },
-        saveStack = {
-            SerializableContainer()
+        saveStack = { navigationConfigsList: List<DecomposeNavigationConfig> ->
+            return@childStack SerializableContainer(
+                value = json.encodeToString(
+                    serializer = ListSerializer(PolymorphicSerializer(DecomposeNavigationConfig::class)),
+                    value = navigationConfigsList
+                ),
+                strategy = String.serializer()
+            )
         },
-        restoreStack = {
-            listOf()
+        restoreStack = { serializableContainer: SerializableContainer ->
+            return@childStack json.decodeFromString(
+                deserializer = ListSerializer(PolymorphicSerializer(DecomposeNavigationConfig::class)),
+                string = serializableContainer.consume(String.serializer()).orEmpty()
+            )
         },
         key = "$typeId$id",
         handleBackButton = true,
@@ -62,6 +84,21 @@ class LineNavigationComponent(
 
     override val activeConfig: DecomposeNavigationConfig
         get() = childStack.active.configuration
+
+    private var state: State = stateKeeper.consume(
+        key = "SAVED_STATE",
+        strategy = State.serializer()
+    ) ?: run {
+        State(15)
+    }
+
+    init {
+        stateKeeper.register(
+            key = "SAVED_STATE",
+            strategy = State.serializer(),
+            supplier = { state }
+        )
+    }
 
     fun push(config: DecomposeNavigationConfig) {
         navigation.push(config)
@@ -137,8 +174,7 @@ class LineNavigationComponent(
                 key(instance.typeId, instance.id) {
                     instance.Render()
                 }
-            }
-            else {
+            } else {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
@@ -153,4 +189,9 @@ class LineNavigationComponent(
             onDispose { lineNavigator.unbind() }
         }
     }
+
+
+    @Serializable
+    private data class State(val someValue: Int = 0)
+
 }
