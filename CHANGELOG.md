@@ -3,7 +3,7 @@
 All notable changes to this project are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [1.0.0] - 2026-09-26
 
 ### Added
 
@@ -49,13 +49,11 @@ All notable changes to this project are documented here. Format loosely follows
   on it broke every JVM compile in this module. If `kmptoolkit-logging` adds a `jvm` target later,
   delete `io.github.jamal_wia.decomposenavigator.logging` and switch the (identically-shaped) imports
   — a mechanical change, not a redesign.
-- **`explicitApi()` is not yet enabled.** `decomposenavigator-core` was ported from a codebase with
-  no explicit visibility/return-type annotations; turning on strict mode today would fail on every
-  public declaration at once. Adopting it — with the mechanical retrofit that requires — is a
-  pre-`1.0.0` task.
-- **No Maven Central publish has happened yet.** The publishing scaffolding
-  (`decomposenavigator.publish`, POM metadata, signing) is in place and mirrors KMPToolkit's, but
-  `gradle.properties` has never had real Sonatype credentials supplied, and no release has been cut.
+- **`explicitApi()` is not yet enabled**, and `1.0.0` ships without it. `decomposenavigator-core` was
+  ported from a codebase with no explicit visibility/return-type annotations; turning on strict mode
+  today would fail on every public declaration at once. Adopting it is still tracked as follow-up
+  work, not abandoned — writing out the modifiers a symbol already has by default is not itself an
+  ABI break, so it can land in a `1.x` release rather than forcing a `2.0.0`.
 - **No `:sample` app yet** (KMPToolkit and Paginator both ship one). `settings.gradle.kts` has the
   module commented out rather than a broken reference.
 - The original module's README documents the `deeplink/` subsystem in detail but its own "Threading

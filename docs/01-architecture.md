@@ -49,9 +49,11 @@ support the JVM target natively, so the target costs nothing to add and nothing 
 `decomposenavigator-core` was mechanically ported from a large existing codebase with no explicit
 visibility or return-type annotations anywhere. Turning on Kotlin's strict explicit-API mode today
 would fail the build on every public declaration at once, rather than catch a real API-boundary
-mistake as intended. Adopting it — the annotation retrofit that requires — is tracked as a
-pre-`1.0.0` task in `CHANGELOG.md`. ABI validation (`checkKotlinAbi` / `updateKotlinAbi`) is already
-active regardless, since it dumps whatever is publicly visible under Kotlin's default rules.
+mistake as intended. `1.0.0` ships without it; adopting it — the annotation retrofit that requires —
+is tracked as follow-up work in `CHANGELOG.md`, not abandoned. Writing out the modifier a symbol
+already has by default doesn't change the public API surface, so it can land in a later `1.x`
+release rather than forcing a `2.0.0`. ABI validation (`checkKotlinAbi` / `updateKotlinAbi`) is
+already active regardless, since it dumps whatever is publicly visible under Kotlin's default rules.
 
 ## Public API and semver
 
