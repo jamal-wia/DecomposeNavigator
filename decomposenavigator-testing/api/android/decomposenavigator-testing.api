@@ -1,0 +1,80 @@
+public final class io/github/jamal_wia/decomposenavigator/testing/FakeDeepLinkNavigator : io/github/jamal_wia/decomposenavigator/deeplink/DeepLinkNavigator {
+	public static final field $stable I
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;)V
+	public fun getActiveScreenConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public final fun getReturnToFirstScreenCallCount ()I
+	public final fun getShown ()Ljava/util/List;
+	public fun returnToFirstScreen ()V
+	public fun showScreen (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/testing/FakeLineNavigator : io/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun applyFallbackPop (Lkotlin/jvm/functions/Function0;)V
+	public fun bind (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;)V
+	public synthetic fun bind (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun bringToFront (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun canPop ()Z
+	public final fun getBringToFrontCalls ()Ljava/util/List;
+	public final fun getNavigateCalls ()Ljava/util/List;
+	public synthetic fun getNavigationComponent ()Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;
+	public final fun getPopToCalls ()Ljava/util/List;
+	public final fun getPushCalls ()Ljava/util/List;
+	public final fun getPushNewCalls ()Ljava/util/List;
+	public final fun getPushToFrontCalls ()Ljava/util/List;
+	public final fun getReplaceAllCalls ()Ljava/util/List;
+	public final fun getReplaceCalls ()Ljava/util/List;
+	public final fun getStack ()Ljava/util/List;
+	public fun navigate (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+	public fun pop ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun popTo (Lkotlin/jvm/functions/Function1;)Z
+	public fun popToFirst (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun popToRoot ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun push (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun pushNew (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun pushToFront (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun replace (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun replaceAll (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public synthetic fun setNavigationComponent (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun stackSize ()I
+	public fun withAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun withoutAnimation ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/testing/FakeSwitchNavigator : io/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator {
+	public static final field $stable I
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;)V
+	public fun applyFallbackPop (Lkotlin/jvm/functions/Function0;)V
+	public fun bind (Lio/github/jamal_wia/decomposenavigator/controller/SwitchNavigationComponentController;)V
+	public synthetic fun bind (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun canPop ()Z
+	public fun getActiveConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public final fun getBackStack ()Ljava/util/List;
+	public synthetic fun getNavigationComponent ()Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;
+	public final fun getSwitchToCalls ()Ljava/util/List;
+	public fun pop ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun popToRoot ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public synthetic fun setNavigationComponent (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun switchTo (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun switchToFirst (Lkotlin/jvm/functions/Function0;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;Lkotlin/jvm/functions/Function1;)Z
+	public fun switchToFirstAndAwaitReady (Lkotlin/jvm/functions/Function0;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun withAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun withoutAnimation ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/testing/RecordingNavigator : io/github/jamal_wia/decomposenavigator/navigator/base/Navigator {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun bind (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public final fun getBindCallCount ()I
+	public final fun getBoundComponent ()Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;
+	public final fun runOrEnqueue (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/testing/RecordingNavigatorKt {
+	public static final fun link (Lio/github/jamal_wia/decomposenavigator/testing/RecordingNavigator;Lio/github/jamal_wia/decomposenavigator/testing/RecordingNavigator;)Lio/github/jamal_wia/decomposenavigator/testing/RecordingNavigator;
+}
+

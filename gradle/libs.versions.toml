@@ -1,0 +1,54 @@
+[versions]
+# --- Toolchain — aligned with TahfeezKMP1 (the app this library is extracted from and will be
+# folded back into), not with KMPToolkit's slightly older pins, so the eventual replacement of
+# TahfeezAI's internal core/decompose-navigator module compiles against a matching toolchain. ---
+agp = "9.4.0"
+kotlin = "2.4.20"
+composeMultiplatform = "1.12.0"
+mavenPublish = "0.37.0"
+
+# --- SDK levels — single source of truth, read via libs.versions.compileSdk / .minSdk ---
+compileSdk = "37"
+minSdk = "24"
+
+# --- Kotlinx ---
+coroutines = "1.11.0"
+serialization = "1.11.0"
+
+# --- Decompose (arkivanov) — the navigation engine this library wraps ---
+decompose = "3.5.0"
+essenty = "2.6.0"
+
+# --- Test tooling ---
+junit = "4.13.2"
+
+[libraries]
+# Kotlinx
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+
+# Decompose
+decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
+decompose-compose = { group = "com.arkivanov.decompose", name = "extensions-compose", version.ref = "decompose" }
+essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", version.ref = "essenty" }
+essenty-lifecycle-coroutines = { group = "com.arkivanov.essenty", name = "lifecycle-coroutines", version.ref = "essenty" }
+
+# Test tooling
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+# Gradle-plugin coordinates — consumed only by build-logic, never by a library module directly
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-serialization-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlin" }
+compose-gradlePlugin = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeMultiplatform" }
+composeCompiler-gradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
+mavenPublish-gradlePlugin = { group = "com.vanniktech", name = "gradle-maven-publish-plugin", version.ref = "mavenPublish" }
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

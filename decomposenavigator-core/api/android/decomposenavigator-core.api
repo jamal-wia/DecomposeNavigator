@@ -1,0 +1,590 @@
+public final class io/github/jamal_wia/decomposenavigator/ComposableSingletons$NavigationAnimationsKt {
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/ComposableSingletons$NavigationAnimationsKt;
+	public fun <init> ()V
+	public final fun getLambda$-1663853256$io_github_jamal_wia_decomposenavigator_core_release ()Lkotlin/jvm/functions/Function5;
+	public final fun getLambda$-1734371721$io_github_jamal_wia_decomposenavigator_core_release ()Lkotlin/jvm/functions/Function5;
+	public final fun getLambda$-322487979$io_github_jamal_wia_decomposenavigator_core_release ()Lkotlin/jvm/functions/Function5;
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/CoveringScreen {
+}
+
+public final class io/github/jamal_wia/decomposenavigator/NavigationAnimationsKt {
+	public static final fun fadeStackAnimation (Landroidx/compose/animation/core/FiniteAnimationSpec;)Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	public static synthetic fun fadeStackAnimation$default (Landroidx/compose/animation/core/FiniteAnimationSpec;ILjava/lang/Object;)Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	public static final fun popStackAnimation (Landroidx/compose/animation/core/FiniteAnimationSpec;)Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	public static synthetic fun popStackAnimation$default (Landroidx/compose/animation/core/FiniteAnimationSpec;ILjava/lang/Object;)Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	public static final fun pushStackAnimation (Landroidx/compose/animation/core/FiniteAnimationSpec;)Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	public static synthetic fun pushStackAnimation$default (Landroidx/compose/animation/core/FiniteAnimationSpec;ILjava/lang/Object;)Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	public static final fun slideStackAnimation (Lio/github/jamal_wia/decomposenavigator/SlideDirection;)Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/ReadinessAwaitable {
+	public abstract fun awaitReady (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/RenderComponent {
+	public abstract fun Render (Landroidx/compose/runtime/Composer;I)V
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/ReturnsToFirstScreen {
+	public abstract fun returnToFirstScreen ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/ScreenConfigRegistry {
+	public static final field $stable I
+	public static final field Companion Lio/github/jamal_wia/decomposenavigator/ScreenConfigRegistry$Companion;
+	public final fun createComponent (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/ComponentContext;)Lio/github/jamal_wia/decomposenavigator/RenderComponent;
+	public final fun getJson ()Lkotlinx/serialization/json/Json;
+	public final fun getScreenConfigPolymorphicSerializerModule ()Lkotlinx/serialization/modules/SerializersModule;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/ScreenConfigRegistry$Builder {
+	public static final field $stable I
+	public fun <init> ()V
+	public final fun build ()Lio/github/jamal_wia/decomposenavigator/ScreenConfigRegistry;
+	public final fun getAdditionalModules ()Ljava/util/List;
+	public final fun getFactories ()Ljava/util/Map;
+	public final fun getLogger ()Lio/github/jamal_wia/decomposenavigator/logging/Logger;
+	public final fun getNavigationFactories ()Ljava/util/Map;
+	public final fun getSerializerRegistrations ()Ljava/util/List;
+	public final fun registerModule (Lkotlinx/serialization/modules/SerializersModule;)V
+	public final fun setLogger (Lio/github/jamal_wia/decomposenavigator/logging/Logger;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/ScreenConfigRegistry$Companion {
+	public final fun invoke (Lkotlin/jvm/functions/Function1;)Lio/github/jamal_wia/decomposenavigator/ScreenConfigRegistry;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/ScreenConfigRegistryKt {
+	public static final fun serializerModule (Lio/github/jamal_wia/decomposenavigator/ScreenConfigRegistry$Builder;Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/SerializerRegistration {
+	public static final field $stable I
+	public fun <init> (Lkotlin/reflect/KClass;Lkotlinx/serialization/KSerializer;)V
+	public final fun register (Lkotlinx/serialization/modules/PolymorphicModuleBuilder;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/SlideDirection : java/lang/Enum {
+	public static final field BACKWARD Lio/github/jamal_wia/decomposenavigator/SlideDirection;
+	public static final field FORWARD Lio/github/jamal_wia/decomposenavigator/SlideDirection;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/jamal_wia/decomposenavigator/SlideDirection;
+	public static fun values ()[Lio/github/jamal_wia/decomposenavigator/SlideDirection;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/UtilKt {
+	public static final fun emptyStackAnimation ()Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	public static final fun randomId ()J
+}
+
+public abstract class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig : io/github/jamal_wia/decomposenavigator/config/ScreenConfig {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun equals (Ljava/lang/Object;)Z
+	public abstract fun getId ()J
+	public abstract fun getTypeId ()Ljava/lang/String;
+	public fun hashCode ()I
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation : io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig {
+	public static final field $stable I
+	public static final field Companion Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation$Companion;
+	public fun <init> (Ljava/util/List;Ljava/lang/String;J)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/String;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getId ()J
+	public final fun getInitialConfigs ()Ljava/util/List;
+	public fun getTypeId ()Ljava/lang/String;
+}
+
+public final synthetic class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen : io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig {
+	public static final field $stable I
+	public static final field Companion Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen$Companion;
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Ljava/lang/String;JLjava/lang/Integer;)V
+	public synthetic fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Ljava/lang/String;JLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getId ()J
+	public final fun getInitialConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public final fun getMaxBackStackSize ()Ljava/lang/Integer;
+	public fun getTypeId ()Ljava/lang/String;
+}
+
+public final synthetic class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer : io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig {
+	public static final field $stable I
+	public static final field Companion Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer$Companion;
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Ljava/lang/String;J)V
+	public synthetic fun <init> (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Ljava/lang/String;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun getId ()J
+	public fun getTypeId ()Ljava/lang/String;
+}
+
+public final synthetic class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation : io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig {
+	public static final field $stable I
+	public static final field Companion Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$Companion;
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Ljava/util/List;Ljava/lang/String;JLjava/lang/Integer;)V
+	public synthetic fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Ljava/util/List;Ljava/lang/String;JLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getId ()J
+	public final fun getInitialConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public final fun getMaxBackStackSize ()Ljava/lang/Integer;
+	public final fun getTabs ()Ljava/util/List;
+	public fun getTypeId ()Ljava/lang/String;
+}
+
+public final synthetic class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry {
+	public static final field $stable I
+	public static final field Companion Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry$Companion;
+	public fun <init> (Ljava/lang/String;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public final fun copy (Ljava/lang/String;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;)Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry;
+	public static synthetic fun copy$default (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry;Ljava/lang/String;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;ILjava/lang/Object;)Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContainer ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation$TabNavigationEntry$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/config/ScreenConfig {
+}
+
+public final class io/github/jamal_wia/decomposenavigator/controller/ComposableSingletons$LineNavigationComponentControllerKt {
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/controller/ComposableSingletons$LineNavigationComponentControllerKt;
+	public fun <init> ()V
+	public final fun getLambda$1569508312$io_github_jamal_wia_decomposenavigator_core_release ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/controller/ComposableSingletons$SwitchNavigationComponentControllerKt {
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/controller/ComposableSingletons$SwitchNavigationComponentControllerKt;
+	public fun <init> ()V
+	public final fun getLambda$1234948060$io_github_jamal_wia_decomposenavigator_core_release ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class io/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController : io/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController, com/arkivanov/decompose/ComponentContext, io/github/jamal_wia/decomposenavigator/ReadinessAwaitable, io/github/jamal_wia/decomposenavigator/RenderComponent, io/github/jamal_wia/decomposenavigator/ReturnsToFirstScreen {
+	public static final field $stable I
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation;Lcom/arkivanov/decompose/ComponentContext;Lkotlin/jvm/functions/Function2;Lkotlinx/serialization/json/Json;Lio/github/jamal_wia/decomposenavigator/logging/Logger;)V
+	public synthetic fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation;Lcom/arkivanov/decompose/ComponentContext;Lkotlin/jvm/functions/Function2;Lkotlinx/serialization/json/Json;Lio/github/jamal_wia/decomposenavigator/logging/Logger;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun Render (Landroidx/compose/runtime/Composer;I)V
+	public fun awaitReady (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun bringToFront (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun bringToFront$default (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun canPop ()Z
+	public fun getActiveScreenConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun getBackHandler ()Lcom/arkivanov/essenty/backhandler/BackHandler;
+	public final fun getChildStack ()Lcom/arkivanov/decompose/value/Value;
+	public fun getComponentContextFactory ()Lcom/arkivanov/decompose/ComponentContextFactory;
+	public fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$LineNavigation;
+	public synthetic fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig;
+	public fun getInstanceKeeper ()Lcom/arkivanov/essenty/instancekeeper/InstanceKeeper;
+	public fun getLifecycle ()Lcom/arkivanov/essenty/lifecycle/Lifecycle;
+	public fun getStateKeeper ()Lcom/arkivanov/essenty/statekeeper/StateKeeper;
+	public fun navigate (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+	public final fun pop (Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun pop$default (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun popTo (Lkotlin/jvm/functions/Function1;)Z
+	public final fun popToFirst (Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun popToFirst$default (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun push (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun push$default (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun pushNew (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun pushNew$default (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun pushToFront (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun pushToFront$default (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun replaceAll (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun replaceAll$default (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun replaceCurrent (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun replaceCurrent$default (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public fun returnToFirstScreen ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/controller/SwitchContainerComponentController : io/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController, com/arkivanov/decompose/ComponentContext, io/github/jamal_wia/decomposenavigator/ReadinessAwaitable, io/github/jamal_wia/decomposenavigator/RenderComponent, io/github/jamal_wia/decomposenavigator/ReturnsToFirstScreen {
+	public static final field $stable I
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Lcom/arkivanov/decompose/ComponentContext;Lkotlin/jvm/functions/Function2;)V
+	public fun Render (Landroidx/compose/runtime/Composer;I)V
+	public fun awaitReady (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getActiveScreenConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun getBackHandler ()Lcom/arkivanov/essenty/backhandler/BackHandler;
+	public final fun getChild ()Lio/github/jamal_wia/decomposenavigator/RenderComponent;
+	public final fun getChildFactory ()Lkotlin/jvm/functions/Function2;
+	public final fun getComponentContext ()Lcom/arkivanov/decompose/ComponentContext;
+	public fun getComponentContextFactory ()Lcom/arkivanov/decompose/ComponentContextFactory;
+	public fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public synthetic fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig;
+	public fun getInstanceKeeper ()Lcom/arkivanov/essenty/instancekeeper/InstanceKeeper;
+	public fun getLifecycle ()Lcom/arkivanov/essenty/lifecycle/Lifecycle;
+	public fun getStateKeeper ()Lcom/arkivanov/essenty/statekeeper/StateKeeper;
+	public fun navigate (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+	public fun returnToFirstScreen ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/controller/SwitchNavigationComponentController : io/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController, com/arkivanov/decompose/ComponentContext, io/github/jamal_wia/decomposenavigator/RenderComponent, io/github/jamal_wia/decomposenavigator/ReturnsToFirstScreen {
+	public static final field $stable I
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen;Lcom/arkivanov/decompose/ComponentContext;Lkotlin/jvm/functions/Function2;Lkotlinx/serialization/json/Json;Lio/github/jamal_wia/decomposenavigator/logging/Logger;)V
+	public synthetic fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen;Lcom/arkivanov/decompose/ComponentContext;Lkotlin/jvm/functions/Function2;Lkotlinx/serialization/json/Json;Lio/github/jamal_wia/decomposenavigator/logging/Logger;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun Render (Landroidx/compose/runtime/Composer;I)V
+	public fun getActiveScreenConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun getBackHandler ()Lcom/arkivanov/essenty/backhandler/BackHandler;
+	public final fun getBackStack ()Lcom/arkivanov/decompose/value/MutableValue;
+	public final fun getChildStack ()Lcom/arkivanov/decompose/value/Value;
+	public fun getComponentContextFactory ()Lcom/arkivanov/decompose/ComponentContextFactory;
+	public fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreen;
+	public synthetic fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig;
+	public fun getInstanceKeeper ()Lcom/arkivanov/essenty/instancekeeper/InstanceKeeper;
+	public fun getLifecycle ()Lcom/arkivanov/essenty/lifecycle/Lifecycle;
+	public fun getStateKeeper ()Lcom/arkivanov/essenty/statekeeper/StateKeeper;
+	public fun navigate (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+	public final fun popBackStack ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public final fun popBackStackToRoot ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public fun returnToFirstScreen ()V
+	public final fun switchTo (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun switchTo$default (Lio/github/jamal_wia/decomposenavigator/controller/SwitchNavigationComponentController;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/controller/TabNavigationComponentController : io/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController, com/arkivanov/decompose/ComponentContext, io/github/jamal_wia/decomposenavigator/RenderComponent, io/github/jamal_wia/decomposenavigator/ReturnsToFirstScreen {
+	public static final field $stable I
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation;Lcom/arkivanov/decompose/ComponentContext;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function6;)V
+	public synthetic fun <init> (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation;Lcom/arkivanov/decompose/ComponentContext;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function6;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun Render (Landroidx/compose/runtime/Composer;I)V
+	public fun getActiveScreenConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun getBackHandler ()Lcom/arkivanov/essenty/backhandler/BackHandler;
+	public fun getComponentContextFactory ()Lcom/arkivanov/decompose/ComponentContextFactory;
+	public fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$TabNavigation;
+	public synthetic fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig;
+	public final fun getInnerSwitch ()Lio/github/jamal_wia/decomposenavigator/controller/SwitchNavigationComponentController;
+	public fun getInstanceKeeper ()Lcom/arkivanov/essenty/instancekeeper/InstanceKeeper;
+	public fun getLifecycle ()Lcom/arkivanov/essenty/lifecycle/Lifecycle;
+	public fun getStateKeeper ()Lcom/arkivanov/essenty/statekeeper/StateKeeper;
+	public fun navigate (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+	public fun returnToFirstScreen ()V
+}
+
+public abstract class io/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun equals (Ljava/lang/Object;)Z
+	public abstract fun getActiveScreenConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public abstract fun getHostConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig;
+	public final fun getId ()J
+	public final fun getTypeId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public abstract fun navigate (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/deeplink/DecomposeDeepLinkNavigator : io/github/jamal_wia/decomposenavigator/deeplink/DeepLinkNavigator {
+	public static final field $stable I
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;)V
+	public fun getActiveScreenConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun returnToFirstScreen ()V
+	public fun showScreen (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;)V
+}
+
+public class io/github/jamal_wia/decomposenavigator/deeplink/DeepLinkBus {
+	public static final field $stable I
+	public fun <init> ()V
+	public final fun consume (Ljava/lang/Object;)V
+	public final fun getPending ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun publish (Ljava/lang/Object;)V
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/deeplink/DeepLinkHandler {
+	public abstract fun canHandle (Ljava/lang/Object;)Z
+	public abstract fun handle (Ljava/lang/Object;Lio/github/jamal_wia/decomposenavigator/deeplink/DeepLinkNavigator;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/deeplink/DeepLinkNavigator {
+	public abstract fun getActiveScreenConfig ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public abstract fun returnToFirstScreen ()V
+	public abstract fun showScreen (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;)V
+}
+
+public class io/github/jamal_wia/decomposenavigator/deeplink/DeepLinkRouter {
+	public static final field $stable I
+	public fun <init> (Lio/github/jamal_wia/decomposenavigator/deeplink/DeepLinkBus;Ljava/util/List;Lio/github/jamal_wia/decomposenavigator/logging/Logger;)V
+	public synthetic fun <init> (Lio/github/jamal_wia/decomposenavigator/deeplink/DeepLinkBus;Ljava/util/List;Lio/github/jamal_wia/decomposenavigator/logging/Logger;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun route (Lio/github/jamal_wia/decomposenavigator/deeplink/DeepLinkNavigator;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract class io/github/jamal_wia/decomposenavigator/event/ResultEvent {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (J)V
+	public synthetic fun <init> (JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun emit (Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun emit (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun emit (Ljava/util/Set;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun flow (Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun flow$default (Lio/github/jamal_wia/decomposenavigator/event/ResultEvent;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public final fun getId ()J
+	public fun hashCode ()I
+	public fun tryEmit (Ljava/lang/Object;)Z
+	public fun tryEmit (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public fun tryEmit (Ljava/util/Set;Ljava/lang/Object;)Z
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/logging/Logger {
+	public abstract fun d (Lkotlin/jvm/functions/Function0;)V
+	public abstract fun e (Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun e$default (Lio/github/jamal_wia/decomposenavigator/logging/Logger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/logging/Logger$DefaultImpls {
+	public static synthetic fun e$default (Lio/github/jamal_wia/decomposenavigator/logging/Logger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/logging/NoopLogger : io/github/jamal_wia/decomposenavigator/logging/Logger {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/jamal_wia/decomposenavigator/logging/NoopLogger;
+	public fun d (Lkotlin/jvm/functions/Function0;)V
+	public fun e (Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/navigator/LiveNavigator {
+	public static final field $stable I
+	public static final field Companion Lio/github/jamal_wia/decomposenavigator/navigator/LiveNavigator$Companion;
+	public synthetic fun <init> (Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/CoroutineDispatcher;JLio/github/jamal_wia/decomposenavigator/logging/Logger;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/CoroutineDispatcher;JLio/github/jamal_wia/decomposenavigator/logging/Logger;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getValue ()Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;
+	public final fun navigate (Lkotlin/jvm/functions/Function1;)V
+	public final fun navigateAwaiting (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun publish (Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/navigator/LiveNavigator$Companion {
+	public final fun getDEFAULT_WAIT_TIMEOUT-UwyO8pc ()J
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/navigator/base/NavigateHandler {
+	public abstract fun navigate (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+}
+
+public abstract class io/github/jamal_wia/decomposenavigator/navigator/base/Navigator {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun addChild (Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;)V
+	public abstract fun bind (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	protected final fun checkNotReleased ()V
+	protected final fun defaultBind (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public final fun findAncestorBy (Lkotlin/jvm/functions/Function1;)Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;
+	public final fun findCousinBy (Lkotlin/jvm/functions/Function1;)Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;
+	public final fun findDescendantBy (Lkotlin/jvm/functions/Function1;)Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;
+	public final fun findGrandParentBy (Lkotlin/jvm/functions/Function1;)Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;
+	public final fun findSiblingBy (Lkotlin/jvm/functions/Function1;)Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;
+	public final fun getChildren ()Ljava/util/List;
+	protected final fun getFallbackPop ()Lkotlin/jvm/functions/Function0;
+	protected fun getLogger ()Lio/github/jamal_wia/decomposenavigator/logging/Logger;
+	protected abstract fun getNavigationComponent ()Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;
+	public final fun getParent ()Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;
+	protected final fun getPendingActions ()Ljava/util/List;
+	protected fun get_children ()Ljava/util/List;
+	protected fun get_parent ()Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;
+	public final fun isReleased ()Z
+	public fun release ()V
+	public fun removeChild (Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;)Z
+	public fun removeParent (Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;)V
+	protected final fun requireComponent ()Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;
+	protected final fun setFallbackPop (Lkotlin/jvm/functions/Function0;)V
+	protected abstract fun setNavigationComponent (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun setParent (Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;)V
+	protected final fun setReleased (Z)V
+	protected fun set_parent (Lio/github/jamal_wia/decomposenavigator/navigator/base/Navigator;)V
+	public fun toString ()Ljava/lang/String;
+	protected final fun withComponentOrEnqueue (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/navigator/base/NavigatorKt {
+	public static final fun getLocalEnclosingLineNavigator (Landroidx/compose/runtime/Composer;I)Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;
+	public static final fun getLocalLineNavigator (Landroidx/compose/runtime/Composer;I)Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;
+	public static final fun getLocalNavigator ()Landroidx/compose/runtime/ProvidableCompositionLocal;
+	public static final fun getLocalOutermostLineNavigator (Landroidx/compose/runtime/Composer;I)Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;
+	public static final fun getLocalSwitchNavigator (Landroidx/compose/runtime/Composer;I)Lio/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator;
+	public static final fun requireLineNavigator (Landroidx/compose/runtime/Composer;I)Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;
+	public static final fun requireSwitchNavigator (Landroidx/compose/runtime/Composer;I)Lio/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator;
+}
+
+public abstract interface class io/github/jamal_wia/decomposenavigator/navigator/base/PopHandler {
+	public abstract fun applyFallbackPop (Lkotlin/jvm/functions/Function0;)V
+	public abstract fun canPop ()Z
+	public abstract fun pop ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public abstract fun popToRoot ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+}
+
+public abstract class io/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator : io/github/jamal_wia/decomposenavigator/navigator/base/Navigator, io/github/jamal_wia/decomposenavigator/navigator/base/NavigateHandler, io/github/jamal_wia/decomposenavigator/navigator/base/PopHandler {
+	public static final field $stable I
+	public fun <init> ()V
+	protected final fun applyAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public abstract fun bringToFront (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun bringToFront$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+	public fun getAnimation ()Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	protected final fun getSlideDirection ()Landroidx/compose/runtime/MutableState;
+	public abstract fun popTo (Lkotlin/jvm/functions/Function1;)Z
+	public abstract fun popToFirst (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun popToFirst$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+	public abstract fun push (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun push$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+	public abstract fun pushNew (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun pushNew$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+	public abstract fun pushToFront (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun pushToFront$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+	public abstract fun replace (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun replace$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+	public abstract fun replaceAll (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun replaceAll$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+	public fun setAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public abstract fun stackSize ()I
+	public abstract fun withAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public abstract fun withoutAnimation ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator$DefaultLineNavigator : io/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun applyFallbackPop (Lkotlin/jvm/functions/Function0;)V
+	public fun bind (Lio/github/jamal_wia/decomposenavigator/controller/LineNavigationComponentController;)V
+	public synthetic fun bind (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun bringToFront (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun canPop ()Z
+	public synthetic fun getNavigationComponent ()Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;
+	public fun navigate (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+	public fun pop ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun popTo (Lkotlin/jvm/functions/Function1;)Z
+	public fun popToFirst (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun popToRoot ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun push (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun pushNew (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun pushToFront (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun release ()V
+	public fun replace (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun replaceAll (Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public synthetic fun setNavigationComponent (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun stackSize ()I
+	public fun withAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun withoutAnimation ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigatorCapKt {
+	public static final fun pushCapped (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;ILcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun pushCapped$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/LineNavigator;Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;ILcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+}
+
+public abstract class io/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator : io/github/jamal_wia/decomposenavigator/navigator/base/Navigator, io/github/jamal_wia/decomposenavigator/navigator/base/PopHandler {
+	public static final field $stable I
+	public fun <init> ()V
+	public abstract fun getActiveConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public fun getAnimation ()Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;
+	public fun setAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public abstract fun switchTo (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public static synthetic fun switchTo$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator;Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;ILjava/lang/Object;)V
+	public abstract fun switchToFirst (Lkotlin/jvm/functions/Function0;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;Lkotlin/jvm/functions/Function1;)Z
+	public static synthetic fun switchToFirst$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator;Lkotlin/jvm/functions/Function0;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Z
+	public abstract fun switchToFirstAndAwaitReady (Lkotlin/jvm/functions/Function0;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun switchToFirstAndAwaitReady$default (Lio/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator;Lkotlin/jvm/functions/Function0;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public abstract fun withAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public abstract fun withoutAnimation ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator$DefaultSwitchNavigator : io/github/jamal_wia/decomposenavigator/navigator/impl/SwitchNavigator {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun applyFallbackPop (Lkotlin/jvm/functions/Function0;)V
+	public fun bind (Lio/github/jamal_wia/decomposenavigator/controller/SwitchNavigationComponentController;)V
+	public synthetic fun bind (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun canPop ()Z
+	public fun getActiveConfig ()Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;
+	public synthetic fun getNavigationComponent ()Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;
+	public fun pop ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun popToRoot ()Lio/github/jamal_wia/decomposenavigator/config/ScreenConfig;
+	public fun release ()V
+	public synthetic fun setNavigationComponent (Lio/github/jamal_wia/decomposenavigator/controller/base/NavigationComponentController;)V
+	public fun switchTo (Lio/github/jamal_wia/decomposenavigator/config/NavigationScreenConfig$SwitchScreenConfigContainer;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun switchToFirst (Lkotlin/jvm/functions/Function0;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;Lkotlin/jvm/functions/Function1;)Z
+	public fun switchToFirstAndAwaitReady (Lkotlin/jvm/functions/Function0;Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun withAnimation (Lcom/arkivanov/decompose/extensions/compose/stack/animation/StackAnimation;)V
+	public fun withoutAnimation ()V
+}
+
+public final class io/github/jamal_wia/decomposenavigator/state/PersistedSliceKt {
+	public static final fun persistedSlice (Lcom/arkivanov/decompose/ComponentContext;Ljava/lang/String;Lkotlinx/serialization/KSerializer;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+}
+

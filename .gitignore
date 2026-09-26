@@ -1,0 +1,36 @@
+# Build outputs.
+#
+# These patterns are anchored on purpose. A bare `build/` matches at *any* depth, so a Kotlin
+# source package named `build` — e.g. src/commonMain/kotlin/.../platform/build/ — is silently
+# skipped by `git add`, with no warning and no symptom until a clean checkout fails to compile.
+# Anchoring to the repo root and to one level below it covers every Gradle project here (all
+# modules are top-level) without ever matching a source directory.
+/build/
+/*/build/
+/build-logic/build/
+.gradle/
+.kotlin/
+/captures
+.externalNativeBuild
+.cxx
+*.hprof
+
+# Local machine config — never shared, never committed
+local.properties
+*.iml
+
+# IDE — keep only the shareable subset (code style, inspection profiles, run configs)
+.idea/*
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
+!.idea/runConfigurations.xml
+
+# OS
+.DS_Store
+
+# Signing / credentials — must never end up in the repo
+*.gpg
+*.jks
+*.keystore
+secring.gpg
+/.idea/inspectionProfiles/Project_Default.xml
