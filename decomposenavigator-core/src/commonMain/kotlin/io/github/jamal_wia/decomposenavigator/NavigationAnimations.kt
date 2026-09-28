@@ -48,20 +48,41 @@ fun <C : Any, T : Any> fadeStackAnimation(
  * is passed at the push. The standard slide fades BOTH screens on the way, so for a moment the
  * container's own background shows through — invisible between two plain screens, a white flash
  * between two drawn on a photograph. A cover never lets the screen beneath fade.
+ *
+ * Only the covering screen's own arrival and departure are covers. A plain screen pushed on top of
+ * it slides in as usual, and slides back off on pop, with the covering screen moving beneath it like
+ * any other screen.
  */
 interface CoveringScreen
 
 /**
  * Whether the transition that made [activeConfig] the top screen, in place of [previousConfig],
- * is a cover rather than a slide: it is as soon as either side is a [CoveringScreen], because the
- * screen beneath a cover has to hold still just as much as the cover has to rise.
+ * is a cover rather than a slide, as seen by a child taking part in it in [direction].
+ *
+ * It is a cover exactly when its front screen — the upper of the two — is a [CoveringScreen]: the
+ * screen that arrives on a forward change (a push, a replace), or the one that leaves on a backward
+ * change (a pop). Both children of a transition get the same answer, because the screen beneath a
+ * cover has to hold still just as much as the cover has to rise or sink. Asked instead whether
+ * EITHER side was a cover, a plain screen pushed on top of a covering one rose like the cover itself.
  */
-internal fun isCoverTransition(activeConfig: Any?, previousConfig: Any?): Boolean =
-    activeConfig is CoveringScreen || previousConfig is CoveringScreen
+internal fun isCoverTransition(direction: Direction, activeConfig: Any?, previousConfig: Any?): Boolean {
+    val frontConfig: Any? = if (direction.isForward) activeConfig else previousConfig
+    return frontConfig is CoveringScreen
+}
+
+/**
+ * Whether a child animated in [this] direction takes part in a forward change. Decompose animates a
+ * push or a replace as [Direction.ENTER_FRONT] for the arriving child and [Direction.EXIT_BACK] for
+ * the one it goes over, and a pop as [Direction.EXIT_FRONT] for the leaving child and
+ * [Direction.ENTER_BACK] for the one it uncovers.
+ */
+private val Direction.isForward: Boolean
+    get() = this == Direction.ENTER_FRONT || this == Direction.EXIT_BACK
 
 /**
  * The navigator's standard animation: a slide that reads [slideDirection] state at each frame —
- * except across a [CoveringScreen], where the cover rises or sinks and the other screen holds.
+ * except when a [CoveringScreen] itself arrives or leaves: then it rises or sinks and the screen
+ * beneath holds.
  *
  * This uses a single [StackAnimation] object, so Decompose's per-child animator
  * caching works correctly — the same animator handles both entering and exiting
@@ -76,26 +97,28 @@ internal fun <C : Any, T : Any> slideStackAnimation(
 ): StackAnimation<C, T> = CoverAwareSlideStackAnimation(slideDirection, animationSpec)
 
 /**
- * The slide, with one eye on [CoveringScreen]: on every stack change it notes whether the screen
- * that just became active, or the one it replaced, is a cover, and the single animator then reads
- * that note. The front child of a cover transition rises and sinks (never fades); the back child
- * holds still. Everything else slides as before.
+ * The slide, with one eye on [CoveringScreen]: on every stack change it notes the screen that just
+ * became active and the one it replaced, and each child's animator then asks, once per transition,
+ * whether the front one of the two is a cover ([isCoverTransition]). The front child of a cover
+ * transition rises and sinks (never fades); the back child holds still. Everything else slides as
+ * before.
  *
  * Built on Decompose's plain single-animator animation and not on its per-child selector, which
  * is marked faulty (it rests on `movableContentOf`, with known bugs). The animator cannot see the
- * configurations, but it does see the [Direction], and the front/back side of a transition is all
- * the cover needs once the class has noted that a cover is involved.
+ * configurations, but it does see the [Direction]: whether the change goes forward or back tells
+ * which of the two noted screens is the front one, and the front/back side of the child tells what
+ * it does in a cover.
  */
 private class CoverAwareSlideStackAnimation<C : Any, T : Any>(
     private val slideDirection: State<SlideDirection>,
     animationSpec: FiniteAnimationSpec<Float>,
 ) : StackAnimation<C, T> {
 
-    /** Whether the transition under way involves a [CoveringScreen]; read by the animator per frame. */
-    private var isCover: Boolean = false
+    /** The configuration the last stack change made active; read by the animator per transition. */
+    private var activeConfig: C? = null
 
-    /** The configuration that was active at the last stack change, to tell what a change replaced. */
-    private var previousActiveConfig: C? = null
+    /** The configuration that was active before the last stack change; `null` until there was one. */
+    private var replacedConfig: C? = null
 
     /**
      * The key of the child that was active at the last stack change. A change is told by the child,
@@ -110,10 +133,12 @@ private class CoverAwareSlideStackAnimation<C : Any, T : Any>(
         animator = stackAnimator(animationSpec) { factor, direction, content ->
             // Taken once per transition: a screen gets a new direction with every transition it
             // joins, and keeps it to the end. A stack change that arrives mid-transition is held back
-            // by Decompose until the running one ends, but it rewrites [isCover] at once — read on
-            // every frame, a picker still sinking would turn into a sideways slide under a Back pressed
-            // before it was down, and the schedule beneath it would lurch sideways with it.
-            val cover: Boolean = remember(direction) { isCover }
+            // by Decompose until the running one ends, but it rewrites the noted screens at once — read
+            // on every frame, a picker still sinking would turn into a sideways slide under a Back
+            // pressed before it was down, and the schedule beneath it would lurch sideways with it.
+            val cover: Boolean = remember(direction) {
+                isCoverTransition(direction, activeConfig, replacedConfig)
+            }
             // One call to content, whatever the transition. The kind of transition decides what the
             // layer does, never where the screen sits in the composition: with a call per kind, a
             // screen that went from sliding to lying beneath a cover — or back — was thrown away and
@@ -153,8 +178,8 @@ private class CoverAwareSlideStackAnimation<C : Any, T : Any>(
     ) {
         val active: Child.Created<C, T> = stack.active
         if (active.key != previousActiveKey) {
-            isCover = isCoverTransition(active.configuration, previousActiveConfig)
-            previousActiveConfig = active.configuration
+            replacedConfig = activeConfig
+            activeConfig = active.configuration
             previousActiveKey = active.key
         }
         inner(stack, modifier, content)
