@@ -5,6 +5,8 @@ All notable changes to this project are documented here. Format loosely follows
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-09-29
+
 ### Fixed
 
 - A plain screen pushed on top of a `CoveringScreen` rose from the bottom like a cover instead of
