@@ -238,6 +238,11 @@ data class CityPickerScreenConfig(val leavesTheApp: Boolean = false) : ScreenCon
 navigator.navigate { it.push(CityPickerScreenConfig()) } // rises; the screen beneath stays put
 ```
 
+Only the covering screen's own arrival and departure are covers — what decides is the front screen of
+the transition: the one arriving on a push or a replace, the one leaving on a pop. A plain screen
+pushed on top of a covering one slides in as usual, and slides back off on pop, with the covering
+screen moving beneath it like any other screen.
+
 **`SlideAnimationMarker`** solves Decompose's animation-object caching: `slideStackAnimation(direction)`
 returns a marker that is never rendered — `LineNavigator.applyAnimation()` reads it and updates a
 `MutableState<SlideDirection>` in place, so the underlying `StackAnimation` object never changes and

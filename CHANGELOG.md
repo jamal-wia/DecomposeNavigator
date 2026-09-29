@@ -3,6 +3,15 @@
 All notable changes to this project are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Fixed
+
+- A plain screen pushed on top of a `CoveringScreen` rose from the bottom like a cover instead of
+  sliding in, and sank back down when popped. A transition is now a cover only when its front screen
+  is a `CoveringScreen` — the screen arriving on a push or a replace, or the one leaving on a pop — so
+  a plain screen pushed over a covering one, or replacing it, slides like any other.
+
 ## [1.0.0] - 2026-09-26
 
 ### Added
